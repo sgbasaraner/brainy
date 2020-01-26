@@ -10,18 +10,16 @@ fun main(args: Array<String>) {
     interpret(pair.first, pair.second)
 }
 
-// Brainfuck operates on an array of memory cells, also referred to as the tape,
-// each initially set to zero. (In the original implementation, the tape was 30,000 cells
-// long, but this may not be part of the language specification; different sizes for the tape length
-// and tape cell size give different variants of the language). There is a pointer, initially pointing
-// to the first memory cell.
 fun interpret(tokens: List<Token>, matchingParantheses: MatchingParantheses) {
     val scanner = Scanner(System.`in`)
-    val tapeLength = 30000
+    val tapeLength = 30000 // In the original implementation, the tape was 30,000 cells long.
+
+    // Brainfuck operates on an array of memory cells, also referred to as the tape,
+    // each initially set to zero.
     val zeroByte = UByte.MIN_VALUE.toByte()
     val tape = ByteArray(tapeLength) { zeroByte }
 
-    var pointer = 0
+    var pointer = 0 // There is a pointer, initially pointing to the first memory cell.
     var cursor = 0
 
     while (cursor < tokens.size) {
